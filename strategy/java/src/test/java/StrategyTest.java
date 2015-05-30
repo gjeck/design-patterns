@@ -8,21 +8,29 @@ import static org.junit.Assert.*;
  * @author gregoryjeckell, @date 5/29/15 1:22 PM
  */
 public class StrategyTest {
-    @Test public void testBearAxeAttack() {
-        Strategy s = new Strategy();
-        Strategy.AttackBehavior attack = s.new AttackWithAxe();
-        Strategy.DefenseBehavior defense = s.new DefendWithShield();
 
-        Strategy.Monster bear = s.new BearMonster(attack, defense);
+    @Test public void testBearMonster() {
+        AttackBehavior attack = new AttackWithAxe();
+        DefenseBehavior defense = new DefendWithShield();
+        Monster bear = new BearMonster(attack, defense);
+
+        assertEquals("Bear!", bear.name);
+    }
+
+    @Test public void testBearAxeAttack() {
+        AttackBehavior attack = new AttackWithAxe();
+        DefenseBehavior defense = new DefendWithShield();
+        Monster bear = new BearMonster(attack, defense);
+
         assertEquals("Axe attack!", bear.performAttack());
     }
 
     @Test public void testBearShieldDefense() {
-        Strategy s = new Strategy();
-        Strategy.AttackBehavior attack = s.new AttackWithAxe();
-        Strategy.DefenseBehavior defense = s.new DefendWithShield();
+        AttackBehavior attack = new AttackWithAxe();
+        DefenseBehavior defense = new DefendWithShield();
+        Monster bear = new BearMonster(attack, defense);
 
-        Strategy.Monster bear = s.new BearMonster(attack, defense);
         assertEquals("Shield defend!", bear.performDefense());
     }
+
 }
