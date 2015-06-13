@@ -20,6 +20,18 @@ How to run these things!
 ### Java
 Projects are scaffolded using Gradle. To build/test run:
 ```Bash
+# When inside a project directory
 gradle build
+gradle test
+
+# Run from elsewhere
+gradle test -p strategy/java/
 ```
+
+### Ruby
+Script tests can be run as follows:
+```Bash
+ruby path/to/script_test.rb
+```
+
 ### (More to come later... hopefully)
