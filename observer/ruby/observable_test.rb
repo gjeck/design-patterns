@@ -41,6 +41,22 @@ class ObservableTest < Test::Unit::TestCase
         assert_equal(1100, @payroll.avg_salary)
     end
 
+    def test_payroll_remove
+        @gob.add_observer(@payroll)
+        @bary.add_observer(@payroll)
+        @homer.add_observer(@payroll)
+
+        @bary.salary=1200
+        @homer.salary=2100
+        @gob.salary=0
+
+        @gob.remove_observer(@payroll)
+        @gob.salary=800
+
+        assert_equal(3300, @payroll.total_expenses)
+        assert_equal(1100, @payroll.avg_salary)
+    end
+
     def test_payroll_email_update
         @gob.add_observer(@payroll, @emailer)
         @bary.add_observer(@payroll, @emailer)

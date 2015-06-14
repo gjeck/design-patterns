@@ -12,8 +12,8 @@ module ObservableSubject
         observer.each {|o| @observers << o}
     end
 
-    def remove_observer(observer)
-        @observers.delete(observer)
+    def remove_observer(*observer)
+        observer.each {|o| @observers.delete(o)}
     end
 
     def notify_observers
