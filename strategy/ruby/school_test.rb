@@ -1,6 +1,7 @@
 require 'test/unit'
 require_relative 'school'
 
+
 class SchoolTest < Test::Unit::TestCase
     def setup
         @students = [
