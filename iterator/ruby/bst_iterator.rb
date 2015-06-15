@@ -21,12 +21,7 @@ class BinarySearchTree
     end
 
     def add(item)
-        if @root == nil
-            @root = insert(@root, item)
-        else
-            insert(@root, item)
-        end
-        @length += 1
+        @root = insert(@root, item)
     end
 
     def add_array(items)
@@ -34,11 +29,7 @@ class BinarySearchTree
     end
 
     def delete(item)
-        n = find(@root, item)
-        if n
-            remove(n)
-            @length -= 1
-        end
+        @root = remove(@root, item)
     end
 
     def contains?(item)
@@ -51,90 +42,107 @@ class BinarySearchTree
     end
 
     def min
-        min = find_min(@root)
-        return min == nil ? nil : min.item
+        min, _ = find_min(@root)
+        return min.nil? ? nil : min.item
     end
 
     def max
-        max = find_max(@root)
-        return max == nil ? nil : max.item
+        max, _ = find_max(@root)
+        return max.nil? ? nil : max.item
     end
 
     def insert(node, item)
-        if node == nil
-            return Node.new(item)
+        if node.nil?
+            node = Node.new(item)
+            @length += 1
         elsif item == node.item
             node.count += 1
-            return node
+            @length += 1
         elsif item < node.item
-            if node.left
-                return insert(node.left, item)
-            else
-                return node.left = insert(node.left, item)
-            end
+            node.left = insert(node.left, item)
         else
-            if node.right
-                return insert(node.right, item)
-            else
-                return node.right = insert(node.right, item)
-            end
+            node.right = insert(node.right, item)
         end
+        return node
     end
 
-    def remove(node)
+    def remove(node, item)
+        found, parent = find(node, item)
+        unless found.nil?
+            remove_node(found, parent)
+            @length -= 1
+        end
+        return node
+    end
+
+    def remove_node(node, parent)
         if node.left and node.right
             way = @length % 2 == 0
-            swap = way ? find_min(node.right) : find_max(node.left)
+            swap, swp_parent = way ? find_min(node.right, node) : find_max(node.left, node)
             node.item = swap.item
             node.count = swap.count
-            remove(swap)
+            remove_node(swap, swp_parent)
         elsif node.left
+            node.item = node.left.item
+            node.count = node.left.count
+            unless parent.nil?
+                if parent.left == node
+                    parent.left = node.left
+                else
+                    parent.right = node.left
+                end
+            end
         elsif node.right
-            node = node.right
+            node.item = node.right.item
+            node.count = node.right.count
+            unless parent.nil?
+                if parent.right == node
+                    parent.right = node.right
+                else
+                    parent.left = node.right
+                end
+            end
         else
+            unless parent.nil?
+                if parent.left == node
+                    parent.left = nil
+                else
+                    parent.right = nil
+                end
+            end
             node = nil
         end
         return node
     end
 
-    def find(node, item)
-        if node == nil
+    def find(node, item, parent=nil)
+        if node.nil?
             return nil
         elsif item == node.item
-            return node
+            return node, parent
         elsif item < node.item
-            find(node.left, item)
+            find(node.left, item, node)
         else
-            find(node.right, item)
+            find(node.right, item, node)
         end
     end
 
-    def find_parent(node, item)
-        if node == nil
-            return nil
-        elsif node.left == item or node.right == item
-            return node
-        elsif item < node.item
-            find_parent(node.left, item)
-        else
-            find_parent(node.right, item)
-        end
-    end
-
-    def find_min(node)
+    def find_min(node, parent=nil)
         while node and node.left
+            parent = node
             node = node.left
         end
-        return node
+        return node, parent
     end
 
-    def find_max(node)
+    def find_max(node, parent=nil)
         while node and node.right
+            parent = node
             node = node.right
         end
-        return node
+        return node, parent
     end
 
-    private :insert, :remove, :find, :find_min, :find_max
+    private :insert, :remove, :remove_node, :find, :find_min, :find_max
 
 end
