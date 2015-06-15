@@ -30,6 +30,8 @@ class GraphicCompositeTest < Test::Unit::TestCase
         @point_composite.translate(5, 1)
         assert_equal(10, @point_composite.center.x)
         assert_equal(4, @point_composite.center.y)
+        assert_equal(5, @point_a.center.x)
+        assert_equal(1, @point_a.center.y)
     end
 
     def test_point_composite_add_remove
@@ -43,6 +45,11 @@ class GraphicCompositeTest < Test::Unit::TestCase
         @point_composite.remove_child(p_a)
         assert_equal(0, @point_composite.center.x)
         assert_equal(2, @point_composite.center.y)
+    end
+
+    def test_point_parent
+        @point_composite.add_child(@point_a)
+        assert_equal(@point_composite, @point_a.parent)
     end
 
 end
