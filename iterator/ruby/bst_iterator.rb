@@ -57,7 +57,6 @@ class BinarySearchTree
             @length += 1
         elsif item == node.item
             node.count += 1
-            @length += 1
         elsif item < node.item
             node.left = insert(node.left, item)
         else
