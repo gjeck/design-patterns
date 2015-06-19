@@ -16,6 +16,7 @@ class Node
 end
 
 class BinarySearchTree
+    include Enumerable
 
     attr_reader :length
 
@@ -43,6 +44,11 @@ class BinarySearchTree
     def count(item)
         n = find(@root, item)
         return n ? n.count : 0
+    end
+
+    # Internal iterator (from Enumerable mixin)
+    def each(&block)
+        traverse_inorder(@root, &block)
     end
 
     def min
@@ -141,6 +147,14 @@ class BinarySearchTree
         return root, parent
     end
 
-    private :insert, :remove, :remove_node, :find, :find_min, :find_max
+    def traverse_inorder(root, &block)
+        unless root.nil?
+            traverse_inorder(root.left, &block)
+            yield(root.item)
+            traverse_inorder(root.right, &block)
+        end
+    end
+
+    private :insert, :remove, :remove_node, :find, :find_min, :find_max, :traverse_inorder
 
 end
