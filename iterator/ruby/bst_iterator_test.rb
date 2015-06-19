@@ -40,7 +40,7 @@ class BinarySearchTreeIteratorTest < Test::Unit::TestCase
     end
 
     def test_iterator
-        to_add = [:c, :e, :f, :a, :b]
+        to_add = (0..100).to_a.shuffle
         @bst.add_array(to_add)
 
         expected = to_add.sort
