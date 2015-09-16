@@ -13,7 +13,8 @@
 		0AF939771BA959A80030B421 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0AF939751BA959A80030B421 /* Main.storyboard */; };
 		0AF939791BA959A80030B421 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0AF939781BA959A80030B421 /* Images.xcassets */; };
 		0AF9397C1BA959A80030B421 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0AF9397A1BA959A80030B421 /* LaunchScreen.xib */; };
-		0AF939881BA959A80030B421 /* todoTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AF939871BA959A80030B421 /* todoTests.m */; };
+		0AF9399A1BA9FB830030B421 /* GJCoreData.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AF939991BA9FB830030B421 /* GJCoreData.m */; };
+		0AF9399F1BA9FD710030B421 /* GJCoreDataTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AF9399E1BA9FD710030B421 /* GJCoreDataTest.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -38,7 +39,9 @@
 		0AF9397B1BA959A80030B421 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		0AF939811BA959A80030B421 /* todoTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = todoTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		0AF939861BA959A80030B421 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		0AF939871BA959A80030B421 /* todoTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = todoTests.m; sourceTree = "<group>"; };
+		0AF939981BA9FB830030B421 /* GJCoreData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GJCoreData.h; path = stores/GJCoreData.h; sourceTree = "<group>"; };
+		0AF939991BA9FB830030B421 /* GJCoreData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GJCoreData.m; path = stores/GJCoreData.m; sourceTree = "<group>"; };
+		0AF9399E1BA9FD710030B421 /* GJCoreDataTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GJCoreDataTest.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -82,10 +85,8 @@
 			children = (
 				0AF9396C1BA959A80030B421 /* AppDelegate.h */,
 				0AF9396D1BA959A80030B421 /* AppDelegate.m */,
-				0AF939751BA959A80030B421 /* Main.storyboard */,
-				0AF939781BA959A80030B421 /* Images.xcassets */,
-				0AF9397A1BA959A80030B421 /* LaunchScreen.xib */,
-				0AF9396F1BA959A80030B421 /* todo.xcdatamodeld */,
+				0AF939941BA96BFA0030B421 /* Stores */,
+				0AF9399B1BA9FCB40030B421 /* Views */,
 				0AF939681BA959A80030B421 /* Supporting Files */,
 			);
 			path = todo;
@@ -103,7 +104,7 @@
 		0AF939841BA959A80030B421 /* todoTests */ = {
 			isa = PBXGroup;
 			children = (
-				0AF939871BA959A80030B421 /* todoTests.m */,
+				0AF9399E1BA9FD710030B421 /* GJCoreDataTest.m */,
 				0AF939851BA959A80030B421 /* Supporting Files */,
 			);
 			path = todoTests;
@@ -115,6 +116,26 @@
 				0AF939861BA959A80030B421 /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		0AF939941BA96BFA0030B421 /* Stores */ = {
+			isa = PBXGroup;
+			children = (
+				0AF939781BA959A80030B421 /* Images.xcassets */,
+				0AF9396F1BA959A80030B421 /* todo.xcdatamodeld */,
+				0AF939981BA9FB830030B421 /* GJCoreData.h */,
+				0AF939991BA9FB830030B421 /* GJCoreData.m */,
+			);
+			name = Stores;
+			sourceTree = "<group>";
+		};
+		0AF9399B1BA9FCB40030B421 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				0AF939751BA959A80030B421 /* Main.storyboard */,
+				0AF9397A1BA959A80030B421 /* LaunchScreen.xib */,
+			);
+			name = Views;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -219,6 +240,7 @@
 			files = (
 				0AF9396E1BA959A80030B421 /* AppDelegate.m in Sources */,
 				0AF9396B1BA959A80030B421 /* main.m in Sources */,
+				0AF9399A1BA9FB830030B421 /* GJCoreData.m in Sources */,
 				0AF939711BA959A80030B421 /* todo.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -227,7 +249,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0AF939881BA959A80030B421 /* todoTests.m in Sources */,
+				0AF9399F1BA9FD710030B421 /* GJCoreDataTest.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
