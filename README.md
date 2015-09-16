@@ -18,7 +18,7 @@ nothing more.
 How to run these things!
 
 ### Java
-Projects are scaffolded using Gradle. To build/test run:
+Projects are scaffolded using Gradle. To build or test run:
 ```Bash
 # When inside a project directory
 gradle build
@@ -33,5 +33,14 @@ Script tests can be run as follows:
 ```Bash
 ruby path/to/script_test.rb
 ```
+
+### Objective-C / Swift
+All projects are built with Xcode and can be built or tested using the awesome
+[xctool](https://github.com/facebook/xctool) as follows:
+```Bash
+xctool -workspace YourWorkspace.xcworkspace \
+ -scheme YourScheme \
+ test # or build
+``
 
 ### (More to come later... hopefully)
