@@ -107,3 +107,11 @@
 }
 
 @end
+
+@implementation NSManagedObjectContext (GJManagedObjectContext)
+- (void)saveWithErrorBlock:(void (^)(NSError* error))errorBlock {
+    NSError *error = nil;
+    if ([self hasChanges] && [self save:&error]) {}
+    if (errorBlock) errorBlock(error);
+}
+@end
