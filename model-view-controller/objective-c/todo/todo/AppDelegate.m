@@ -9,6 +9,7 @@
 #import "AppDelegate.h"
 #import "GJCoreData.h"
 
+
 @interface AppDelegate ()
 @property (nonatomic, strong, readonly) NSManagedObjectContext* context;
 @end
@@ -23,6 +24,7 @@
         }
     }];
     _context = [core buildManagedObjectContext];
+        
     return YES;
 }
 

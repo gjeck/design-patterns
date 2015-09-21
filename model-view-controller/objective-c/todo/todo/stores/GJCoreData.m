@@ -102,9 +102,29 @@
 @end
 
 @implementation NSManagedObjectContext (GJManagedObjectContext)
+
 - (void)saveWithErrorBlock:(void (^)(NSError* error))errorBlock {
     NSError *error = nil;
     if ([self hasChanges] && [self save:&error]) {}
     if (errorBlock) errorBlock(error);
 }
+
+@end
+
+@implementation NSManagedObject (GJManagedObject)
+
++ (instancetype)createWithAttributes:(NSDictionary*)attributes
+                           inContext:(NSManagedObjectContext*)context
+                      withErrorBlock:(void (^)(NSError* error))errorBlock {
+    NSString* className = NSStringFromClass([self class]);
+    NSManagedObject* toCreate = [NSEntityDescription insertNewObjectForEntityForName:className
+                                                              inManagedObjectContext:context];
+    for (NSString* key in attributes) {
+        [toCreate setValue:attributes[key] forKey:key];
+    }
+    
+    [context saveWithErrorBlock:errorBlock];
+    return toCreate;
+}
+
 @end

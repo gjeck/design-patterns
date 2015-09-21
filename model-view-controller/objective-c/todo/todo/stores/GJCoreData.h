@@ -21,3 +21,9 @@
 @interface NSManagedObjectContext (GJManagedObjectContext)
 - (void)saveWithErrorBlock:(void (^)(NSError* error))errorBlock;
 @end
+
+@interface NSManagedObject (GJManagedObject)
++ (instancetype)createWithAttributes:(NSDictionary*)attributes
+                           inContext:(NSManagedObjectContext*)context
+                      withErrorBlock:(void (^)(NSError* error))errorBlock;
+@end

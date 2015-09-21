@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0A9521451BAFED0100004FAA /* TodoList.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A9521441BAFED0100004FAA /* TodoList.m */; };
+		0A9521491BAFED8700004FAA /* TodoItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A9521481BAFED8700004FAA /* TodoItem.m */; };
+		0A95214B1BAFF37C00004FAA /* TodoListTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A95214A1BAFF37C00004FAA /* TodoListTest.m */; };
 		0AF9396B1BA959A80030B421 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AF9396A1BA959A80030B421 /* main.m */; };
 		0AF9396E1BA959A80030B421 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AF9396D1BA959A80030B421 /* AppDelegate.m */; };
 		0AF939711BA959A80030B421 /* todo.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 0AF9396F1BA959A80030B421 /* todo.xcdatamodeld */; };
@@ -28,6 +31,11 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0A9521431BAFED0100004FAA /* TodoList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TodoList.h; path = todo/models/TodoList.h; sourceTree = "<group>"; };
+		0A9521441BAFED0100004FAA /* TodoList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TodoList.m; path = todo/models/TodoList.m; sourceTree = "<group>"; };
+		0A9521471BAFED8700004FAA /* TodoItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TodoItem.h; path = todo/models/TodoItem.h; sourceTree = "<group>"; };
+		0A9521481BAFED8700004FAA /* TodoItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TodoItem.m; path = todo/models/TodoItem.m; sourceTree = "<group>"; };
+		0A95214A1BAFF37C00004FAA /* TodoListTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TodoListTest.m; sourceTree = "<group>"; };
 		0AF939651BA959A80030B421 /* todo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = todo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0AF939691BA959A80030B421 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0AF9396A1BA959A80030B421 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -62,6 +70,18 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0A9521461BAFED1400004FAA /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				0A9521471BAFED8700004FAA /* TodoItem.h */,
+				0A9521481BAFED8700004FAA /* TodoItem.m */,
+				0A9521431BAFED0100004FAA /* TodoList.h */,
+				0A9521441BAFED0100004FAA /* TodoList.m */,
+			);
+			name = Models;
+			path = ..;
+			sourceTree = "<group>";
+		};
 		0AF9395C1BA959A70030B421 = {
 			isa = PBXGroup;
 			children = (
@@ -85,6 +105,7 @@
 			children = (
 				0AF9396C1BA959A80030B421 /* AppDelegate.h */,
 				0AF9396D1BA959A80030B421 /* AppDelegate.m */,
+				0A9521461BAFED1400004FAA /* Models */,
 				0AF939941BA96BFA0030B421 /* Stores */,
 				0AF9399B1BA9FCB40030B421 /* Views */,
 				0AF939681BA959A80030B421 /* Supporting Files */,
@@ -105,6 +126,7 @@
 			isa = PBXGroup;
 			children = (
 				0AF9399E1BA9FD710030B421 /* GJCoreDataTest.m */,
+				0A95214A1BAFF37C00004FAA /* TodoListTest.m */,
 				0AF939851BA959A80030B421 /* Supporting Files */,
 			);
 			path = todoTests;
@@ -239,8 +261,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				0AF9396E1BA959A80030B421 /* AppDelegate.m in Sources */,
+				0A9521451BAFED0100004FAA /* TodoList.m in Sources */,
 				0AF9396B1BA959A80030B421 /* main.m in Sources */,
 				0AF9399A1BA9FB830030B421 /* GJCoreData.m in Sources */,
+				0A9521491BAFED8700004FAA /* TodoItem.m in Sources */,
 				0AF939711BA959A80030B421 /* todo.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -250,6 +274,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				0AF9399F1BA9FD710030B421 /* GJCoreDataTest.m in Sources */,
+				0A95214B1BAFF37C00004FAA /* TodoListTest.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -438,6 +463,7 @@
 				0AF9398D1BA959A80030B421 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		0AF9398E1BA959A80030B421 /* Build configuration list for PBXNativeTarget "todoTests" */ = {
 			isa = XCConfigurationList;
@@ -446,6 +472,7 @@
 				0AF939901BA959A80030B421 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 

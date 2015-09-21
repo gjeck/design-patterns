@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="7701" systemVersion="14E46" minimumToolsVersion="Automatic" macOSVersion="Automatic" iOSVersion="Automatic">
-    <entity name="TodoItem" parentEntity="TodoList" syncable="YES">
+    <entity name="TodoItem" representedClassName="TodoItem" parentEntity="TodoList" syncable="YES">
         <attribute name="content" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="done" optional="YES" attributeType="Boolean" defaultValueString="0.0" syncable="YES"/>
         <attribute name="title" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="todoList" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="TodoList" inverseName="todoItems" inverseEntity="TodoList" syncable="YES"/>
     </entity>
-    <entity name="TodoList" syncable="YES">
+    <entity name="TodoList" representedClassName="TodoList" syncable="YES">
         <attribute name="color" optional="YES" attributeType="Transformable" syncable="YES"/>
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="orderValue" optional="YES" attributeType="Float" defaultValueString="0.0" syncable="YES"/>
