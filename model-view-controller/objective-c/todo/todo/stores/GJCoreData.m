@@ -9,10 +9,6 @@
 #import "GJCoreData.h"
 
 @interface GJCoreData()
-@property (nonatomic, weak) NSString* name;
-@property (nonatomic, weak) NSURL* filePath;
-@property (nonatomic, weak) NSBundle* bundle;
-@property (nonatomic, weak) NSString* storeType;
 @property (nonatomic, strong) NSManagedObjectModel* managedObjectModel;
 @property (nonatomic, strong) NSPersistentStoreCoordinator* persistentStoreCoordinator;
 @end
@@ -20,58 +16,54 @@
 @implementation GJCoreData
 
 - (instancetype)init {
-    NSBundle* bundle = [NSBundle mainBundle];
-    NSString* productName = [[bundle infoDictionary] objectForKey:@"CFBundleName"];
-    NSFileManager* fileManager = [NSFileManager defaultManager];
-    NSURL* path = [[fileManager URLsForDirectory:NSDocumentDirectory inDomains:NSUserDomainMask] lastObject];
-    return [self initWithName:productName
-                       inPath:path
-                   withBundle:bundle
-                      forType:NSSQLiteStoreType
-                andErrorBlock:nil];
+    return [GJCoreData buildDefaultStackWithErrorBlock:nil];
 }
 
-- (instancetype)initWithErrorBlock:(void (^)(NSError* error))errorBlock {
-    NSBundle* bundle = [NSBundle mainBundle];
-    NSString* productName = [[bundle infoDictionary] objectForKey:@"CFBundleName"];
-    NSFileManager* fileManager = [NSFileManager defaultManager];
-    NSURL* path = [[fileManager URLsForDirectory:NSDocumentDirectory inDomains:NSUserDomainMask] lastObject];
-    return [self initWithName:productName
-                       inPath:path
-                   withBundle:bundle
-                      forType:NSSQLiteStoreType
-                andErrorBlock:^(NSError *error) {
-                    if (errorBlock) errorBlock(error);
-                }];
-}
-
-- (instancetype)initWithName:(NSString*)name
-                      inPath:(NSURL*)path
-                  withBundle:(NSBundle*)bundle
-                     forType:(NSString*)type
-               andErrorBlock:(void (^)(NSError* error))errorBlock {
+- (instancetype)initWithManagedObjectModel:(NSManagedObjectModel*)model
+             andPersistentStoreCoordinator:(NSPersistentStoreCoordinator*)coordinator {
     if (self = [super init]) {
-        _name = name;
-        _filePath = path;
-        _bundle = bundle;
-        _storeType = type;
-        
-        if ([_storeType isEqualToString:NSInMemoryStoreType]) {
-            _managedObjectModel = [NSManagedObjectModel mergedModelFromBundles:@[_bundle]];
-        } else {
-            _managedObjectModel = [GJCoreData buildManagedObjectModelInBundle:_bundle withName:_name];
-        }
-        
-        void (^persistError)(NSError* error) = ^void(NSError* error) {
-            if (errorBlock) errorBlock(error);
-        };
-        _persistentStoreCoordinator = [GJCoreData buildPersistentStoreCoordinatorWithModel:_managedObjectModel
-                                                                               inDirectory:_filePath
-                                                                                  withName:_name
-                                                                                   forType:_storeType
-                                                                             andErrorBlock:persistError];
+        _managedObjectModel = model;
+        _persistentStoreCoordinator = coordinator;
     }
     return self;
+}
+
++ (GJCoreData*)buildDefaultStackWithErrorBlock:(void (^)(NSError* error))errorBlock {
+    NSBundle* bundle = [NSBundle mainBundle];
+    NSString* productName = [[bundle infoDictionary] objectForKey:@"CFBundleName"];
+    NSManagedObjectModel* model = [GJCoreData buildManagedObjectModelInBundle:bundle withName:productName];
+    
+    void (^persistError)(NSError* error) = ^void(NSError* error) {
+        if (errorBlock) errorBlock(error);
+    };
+    NSFileManager* fileManager = [NSFileManager defaultManager];
+    NSURL* directory = [[fileManager URLsForDirectory:NSDocumentDirectory inDomains:NSUserDomainMask] lastObject];
+    NSString* pathComponent = [NSString stringWithFormat:@"%@.sqlite", productName];
+    NSURL* storeURL = [directory URLByAppendingPathComponent:pathComponent];
+    NSPersistentStoreCoordinator* pscoord = [GJCoreData buildPersistentStoreCoordinatorWithModel:model
+                                                                                            type:NSSQLiteStoreType
+                                                                                   configuration:nil
+                                                                                             URL:storeURL
+                                                                                         options:nil
+                                                                                   andErrorBlock:persistError];
+    
+    return [[GJCoreData alloc] initWithManagedObjectModel:model andPersistentStoreCoordinator:pscoord];
+}
+
++ (GJCoreData*)buildInMemoryStackWithErrorBlock:(void (^)(NSError* error))errorBlock {
+    NSBundle* bundle = [NSBundle mainBundle];
+    NSManagedObjectModel* model = [NSManagedObjectModel mergedModelFromBundles:@[bundle]];
+    
+    void (^persistError)(NSError* error) = ^void(NSError* error) {
+        if (errorBlock) errorBlock(error);
+    };
+    NSPersistentStoreCoordinator* pscoord = [GJCoreData buildPersistentStoreCoordinatorWithModel:model
+                                                                                            type:NSInMemoryStoreType
+                                                                                   configuration:nil
+                                                                                             URL:nil
+                                                                                         options:nil
+                                                                                   andErrorBlock:persistError];
+    return [[GJCoreData alloc] initWithManagedObjectModel:model andPersistentStoreCoordinator:pscoord];
 }
 
 + (NSManagedObjectModel*)buildManagedObjectModelInBundle:(NSBundle*)bundle withName:(NSString*)name {
@@ -81,23 +73,24 @@
 }
 
 + (NSPersistentStoreCoordinator*)buildPersistentStoreCoordinatorWithModel:(NSManagedObjectModel*)model
-                                                              inDirectory:(NSURL*)dir
-                                                                 withName:(NSString*)name
-                                                                  forType:(NSString*)type
+                                                                     type:(NSString*)type
+                                                            configuration:(NSString*)configuration
+                                                                      URL:(NSURL*)url
+                                                                  options:(NSDictionary*)options
                                                             andErrorBlock:(void (^)(NSError* error))errorBlock {
-    NSPersistentStoreCoordinator* persistentStore = [[NSPersistentStoreCoordinator alloc] initWithManagedObjectModel:model];
-    NSURL* storeURL = [dir URLByAppendingPathComponent:[NSString stringWithFormat:@"%@.sqlite", name]];
-    NSError* error = nil;
-    BOOL success = [persistentStore addPersistentStoreWithType:type
-                                                 configuration:nil
-                                                           URL:storeURL
-                                                       options:nil
-                                                         error:&error];
-    if (!success) {
-        if (errorBlock) errorBlock(error);
-    }
+    NSPersistentStoreCoordinator* pscoord = [[NSPersistentStoreCoordinator alloc]
+                                             initWithManagedObjectModel:model];
     
-    return persistentStore;
+    NSError* error = nil;
+    [pscoord addPersistentStoreWithType:type
+                          configuration:configuration
+                                    URL:url
+                                options:options
+                                  error:&error];
+    
+    if (errorBlock) errorBlock(error);
+    
+    return pscoord;
 }
 
 - (NSManagedObjectContext*)buildManagedObjectContext {

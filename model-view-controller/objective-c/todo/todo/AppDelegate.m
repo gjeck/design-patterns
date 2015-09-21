@@ -17,7 +17,7 @@
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    GJCoreData* core = [[GJCoreData alloc] initWithErrorBlock:^(NSError *error) {
+    GJCoreData* core = [GJCoreData buildDefaultStackWithErrorBlock:^(NSError *error) {
         if (error) {
             NSLog(@"%@", error.localizedDescription);
         }

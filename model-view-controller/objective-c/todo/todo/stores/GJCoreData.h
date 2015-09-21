@@ -10,14 +10,11 @@
 #import <CoreData/CoreData.h>
 
 @interface GJCoreData : NSObject
-- (instancetype)initWithErrorBlock:(void (^)(NSError* error))errorBlock;
+- (instancetype)initWithManagedObjectModel:(NSManagedObjectModel*)model
+             andPersistentStoreCoordinator:(NSPersistentStoreCoordinator*)coordinator;
 
-- (instancetype)initWithName:(NSString*)name
-                      inPath:(NSURL*)path
-                  withBundle:(NSBundle*)bundle
-                     forType:(NSString*)type
-               andErrorBlock:(void (^)(NSError* error))errorBlock;
-
++ (GJCoreData*)buildDefaultStackWithErrorBlock:(void (^)(NSError* error))errorBlock;
++ (GJCoreData*)buildInMemoryStackWithErrorBlock:(void (^)(NSError* error))errorBlock;
 - (NSManagedObjectContext*)buildManagedObjectContext;
 @end
 
