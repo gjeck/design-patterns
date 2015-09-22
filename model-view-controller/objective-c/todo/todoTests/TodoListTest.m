@@ -30,16 +30,18 @@
 
 - (void)testCreate {
     NSDictionary* attributes = @{@"color":[UIColor redColor],
-                                 @"name":@"test",
-                                 @"orderValue":@2.4};
+                                 @"title":@"test",
+                                 @"orderValue":@2.4,
+                                 @"done":@NO};
     TodoList* todoList = [TodoList createWithAttributes:attributes
                                               inContext:_context
                                          withErrorBlock:^(NSError *error) {
                                              XCTAssertNil(error);
                                          }];
     XCTAssertEqual(todoList.color, [UIColor redColor]);
-    XCTAssertEqualObjects(todoList.name, @"test");
+    XCTAssertEqualObjects(todoList.title, @"test");
     XCTAssertGreaterThan(@0.0, todoList.orderValue);
+    XCTAssertFalse(todoList.done.boolValue);
     XCTAssertTrue(todoList.todoItems.count == 0);
 }
 

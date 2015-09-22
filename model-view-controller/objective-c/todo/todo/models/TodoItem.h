@@ -11,11 +11,13 @@
 #import "TodoList.h"
 
 
-@interface TodoItem : TodoList
+@interface TodoItem : NSManagedObject <ValueOrdered> {
+    NSNumber* orderValue;
+}
 
-@property (nonatomic, retain) NSString * content;
-@property (nonatomic, retain) NSNumber * done;
-@property (nonatomic, retain) NSString * title;
-@property (nonatomic, retain) TodoList * todoList;
+@property (nonatomic, retain) NSString* content;
+@property (nonatomic, retain) NSNumber* done;
+@property (nonatomic, retain) NSString* title;
+@property (nonatomic, retain) TodoList* todoList;
 
 @end

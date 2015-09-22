@@ -10,14 +10,21 @@
 #import <UIKit/UIKit.h>
 #import <CoreData/CoreData.h>
 
+@protocol ValueOrdered
+@required
+@property (nonatomic, retain) NSNumber* orderValue;
+@end
+
 @class TodoItem;
 
-@interface TodoList : NSManagedObject
+@interface TodoList : NSManagedObject <ValueOrdered> {
+    NSNumber* orderValue;
+}
 
 @property (nonatomic, retain) UIColor* color;
-@property (nonatomic, retain) NSString * name;
-@property (nonatomic, retain) NSNumber * orderValue;
-@property (nonatomic, retain) NSSet *todoItems;
+@property (nonatomic, retain) NSString* title;
+@property (nonatomic, retain) NSNumber* done;
+@property (nonatomic, retain) NSSet* todoItems;
 @end
 
 @interface TodoList (CoreDataGeneratedAccessors)

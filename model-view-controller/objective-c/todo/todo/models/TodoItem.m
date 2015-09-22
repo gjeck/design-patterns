@@ -16,5 +16,6 @@
 @dynamic done;
 @dynamic title;
 @dynamic todoList;
+@dynamic orderValue;
 
 @end

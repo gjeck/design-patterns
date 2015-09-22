@@ -94,7 +94,11 @@
 }
 
 - (NSManagedObjectContext*)buildManagedObjectContext {
-    NSManagedObjectContext* context = [[NSManagedObjectContext alloc] init];
+    return [self buildManagedObjectContextWithConcurrencyType:NSConfinementConcurrencyType];
+}
+
+- (NSManagedObjectContext*)buildManagedObjectContextWithConcurrencyType:(NSManagedObjectContextConcurrencyType)type {
+    NSManagedObjectContext* context = [[NSManagedObjectContext alloc] initWithConcurrencyType:type];
     [context setPersistentStoreCoordinator:_persistentStoreCoordinator];
     return context;
 }
@@ -118,7 +122,7 @@
                       withErrorBlock:(void (^)(NSError* error))errorBlock {
     NSString* className = NSStringFromClass([self class]);
     NSManagedObject* toCreate = [NSEntityDescription insertNewObjectForEntityForName:className
-                                                              inManagedObjectContext:context];
+                                             inManagedObjectContext:context];
     for (NSString* key in attributes) {
         [toCreate setValue:attributes[key] forKey:key];
     }

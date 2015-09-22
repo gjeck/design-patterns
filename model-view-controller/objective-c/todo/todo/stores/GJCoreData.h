@@ -16,6 +16,7 @@
 + (GJCoreData*)buildDefaultStackWithErrorBlock:(void (^)(NSError* error))errorBlock;
 + (GJCoreData*)buildInMemoryStackWithErrorBlock:(void (^)(NSError* error))errorBlock;
 - (NSManagedObjectContext*)buildManagedObjectContext;
+- (NSManagedObjectContext*)buildManagedObjectContextWithConcurrencyType:(NSManagedObjectContextConcurrencyType)type;
 @end
 
 @interface NSManagedObjectContext (GJManagedObjectContext)

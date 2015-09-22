@@ -106,8 +106,8 @@
 				0AF9396C1BA959A80030B421 /* AppDelegate.h */,
 				0AF9396D1BA959A80030B421 /* AppDelegate.m */,
 				0A9521461BAFED1400004FAA /* Models */,
-				0AF939941BA96BFA0030B421 /* Stores */,
 				0AF9399B1BA9FCB40030B421 /* Views */,
+				0AF939941BA96BFA0030B421 /* Stores */,
 				0AF939681BA959A80030B421 /* Supporting Files */,
 			);
 			path = todo;
