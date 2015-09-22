@@ -11,10 +11,10 @@
 
 @implementation TodoList
 
-@dynamic color;
 @dynamic title;
 @dynamic orderValue;
 @dynamic done;
+@dynamic labels;
 @dynamic todoItems;
 
 @end

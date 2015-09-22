@@ -8,6 +8,7 @@
 
 #import "AppDelegate.h"
 #import "GJCoreData.h"
+#import "TodoListTableViewController.h"
 
 
 @interface AppDelegate ()
@@ -24,6 +25,8 @@
         }
     }];
     _context = [core buildManagedObjectContext];
+    
+    [self setInitialViewController];
         
     return YES;
 }
@@ -42,6 +45,14 @@
 
 - (void)applicationWillTerminate:(UIApplication *)application {
     [_context saveWithErrorBlock:nil];
+}
+
+-(void)setInitialViewController {
+    UIStoryboard* todoStory = [UIStoryboard storyboardWithName:@"TodoList" bundle:nil];
+    TodoListTableViewController* root = [[TodoListTableViewController alloc] initWithStoryBoard:todoStory
+                                                                                     andContext:_context];
+    UINavigationController* initialVC = (UINavigationController*) _window.rootViewController;
+    [initialVC setViewControllers:@[root]];
 }
 
 @end

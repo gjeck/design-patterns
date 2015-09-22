@@ -39,6 +39,11 @@
     XCTAssertNotNil(context);
     XCTAssertNotNil(context.persistentStoreCoordinator);
     XCTAssertNotNil(context.persistentStoreCoordinator.managedObjectModel);
+    
+    NSManagedObjectContext* backgroundContext = [core buildManagedObjectContextWithConcurrencyType:NSPrivateQueueConcurrencyType];
+    XCTAssertNotNil(backgroundContext);
+    XCTAssertNotNil(backgroundContext.persistentStoreCoordinator);
+    XCTAssertNotNil(backgroundContext.persistentStoreCoordinator.managedObjectModel);
 }
 
 @end

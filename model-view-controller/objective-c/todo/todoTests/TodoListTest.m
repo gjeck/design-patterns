@@ -8,8 +8,8 @@
 
 #import <UIKit/UIKit.h>
 #import <XCTest/XCTest.h>
-#import "TodoList.h"
 #import "GJCoreData.h"
+#import "TodoList.h"
 
 @interface TodoListTest : XCTestCase
 @property (nonatomic, strong) GJCoreData* core;
@@ -29,8 +29,7 @@
 }
 
 - (void)testCreate {
-    NSDictionary* attributes = @{@"color":[UIColor redColor],
-                                 @"title":@"test",
+    NSDictionary* attributes = @{@"title":@"test",
                                  @"orderValue":@2.4,
                                  @"done":@NO};
     TodoList* todoList = [TodoList createWithAttributes:attributes
@@ -38,10 +37,10 @@
                                          withErrorBlock:^(NSError *error) {
                                              XCTAssertNil(error);
                                          }];
-    XCTAssertEqual(todoList.color, [UIColor redColor]);
     XCTAssertEqualObjects(todoList.title, @"test");
-    XCTAssertGreaterThan(@0.0, todoList.orderValue);
+    XCTAssertGreaterThan(todoList.orderValue.floatValue, 0);
     XCTAssertFalse(todoList.done.boolValue);
+    XCTAssertTrue(todoList.labels.count == 0);
     XCTAssertTrue(todoList.todoItems.count == 0);
 }
 

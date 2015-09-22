@@ -7,7 +7,6 @@
 //
 
 #import <Foundation/Foundation.h>
-#import <UIKit/UIKit.h>
 #import <CoreData/CoreData.h>
 
 @protocol ValueOrdered
@@ -21,9 +20,9 @@
     NSNumber* orderValue;
 }
 
-@property (nonatomic, retain) UIColor* color;
 @property (nonatomic, retain) NSString* title;
 @property (nonatomic, retain) NSNumber* done;
+@property (nonatomic, retain) NSSet* labels;
 @property (nonatomic, retain) NSSet* todoItems;
 @end
 

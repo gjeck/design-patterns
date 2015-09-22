@@ -10,6 +10,9 @@
 		0A9521451BAFED0100004FAA /* TodoList.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A9521441BAFED0100004FAA /* TodoList.m */; };
 		0A9521491BAFED8700004FAA /* TodoItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A9521481BAFED8700004FAA /* TodoItem.m */; };
 		0A95214B1BAFF37C00004FAA /* TodoListTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A95214A1BAFF37C00004FAA /* TodoListTest.m */; };
+		0A9B6F0E1BB1362700DFD67D /* TodoListTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A9B6F0D1BB1362700DFD67D /* TodoListTableViewController.m */; };
+		0A9B6F121BB1379D00DFD67D /* TodoLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A9B6F111BB1379D00DFD67D /* TodoLabel.m */; };
+		0A9B6F141BB1408D00DFD67D /* TodoList.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0A9B6F131BB1408D00DFD67D /* TodoList.storyboard */; };
 		0AF9396B1BA959A80030B421 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AF9396A1BA959A80030B421 /* main.m */; };
 		0AF9396E1BA959A80030B421 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AF9396D1BA959A80030B421 /* AppDelegate.m */; };
 		0AF939711BA959A80030B421 /* todo.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 0AF9396F1BA959A80030B421 /* todo.xcdatamodeld */; };
@@ -36,6 +39,11 @@
 		0A9521471BAFED8700004FAA /* TodoItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TodoItem.h; path = todo/models/TodoItem.h; sourceTree = "<group>"; };
 		0A9521481BAFED8700004FAA /* TodoItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TodoItem.m; path = todo/models/TodoItem.m; sourceTree = "<group>"; };
 		0A95214A1BAFF37C00004FAA /* TodoListTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TodoListTest.m; sourceTree = "<group>"; };
+		0A9B6F0C1BB1362700DFD67D /* TodoListTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TodoListTableViewController.h; path = controllers/TodoListTableViewController.h; sourceTree = "<group>"; };
+		0A9B6F0D1BB1362700DFD67D /* TodoListTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TodoListTableViewController.m; path = controllers/TodoListTableViewController.m; sourceTree = "<group>"; };
+		0A9B6F101BB1379D00DFD67D /* TodoLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TodoLabel.h; path = todo/models/TodoLabel.h; sourceTree = "<group>"; };
+		0A9B6F111BB1379D00DFD67D /* TodoLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TodoLabel.m; path = todo/models/TodoLabel.m; sourceTree = "<group>"; };
+		0A9B6F131BB1408D00DFD67D /* TodoList.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = TodoList.storyboard; sourceTree = "<group>"; };
 		0AF939651BA959A80030B421 /* todo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = todo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0AF939691BA959A80030B421 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0AF9396A1BA959A80030B421 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -75,11 +83,22 @@
 			children = (
 				0A9521471BAFED8700004FAA /* TodoItem.h */,
 				0A9521481BAFED8700004FAA /* TodoItem.m */,
+				0A9B6F101BB1379D00DFD67D /* TodoLabel.h */,
+				0A9B6F111BB1379D00DFD67D /* TodoLabel.m */,
 				0A9521431BAFED0100004FAA /* TodoList.h */,
 				0A9521441BAFED0100004FAA /* TodoList.m */,
 			);
 			name = Models;
 			path = ..;
+			sourceTree = "<group>";
+		};
+		0A9B6F0F1BB1362F00DFD67D /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				0A9B6F0C1BB1362700DFD67D /* TodoListTableViewController.h */,
+				0A9B6F0D1BB1362700DFD67D /* TodoListTableViewController.m */,
+			);
+			name = Controllers;
 			sourceTree = "<group>";
 		};
 		0AF9395C1BA959A70030B421 = {
@@ -107,6 +126,7 @@
 				0AF9396D1BA959A80030B421 /* AppDelegate.m */,
 				0A9521461BAFED1400004FAA /* Models */,
 				0AF9399B1BA9FCB40030B421 /* Views */,
+				0A9B6F0F1BB1362F00DFD67D /* Controllers */,
 				0AF939941BA96BFA0030B421 /* Stores */,
 				0AF939681BA959A80030B421 /* Supporting Files */,
 			);
@@ -155,6 +175,7 @@
 			isa = PBXGroup;
 			children = (
 				0AF939751BA959A80030B421 /* Main.storyboard */,
+				0A9B6F131BB1408D00DFD67D /* TodoList.storyboard */,
 				0AF9397A1BA959A80030B421 /* LaunchScreen.xib */,
 			);
 			name = Views;
@@ -240,6 +261,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0A9B6F141BB1408D00DFD67D /* TodoList.storyboard in Resources */,
 				0AF939771BA959A80030B421 /* Main.storyboard in Resources */,
 				0AF9397C1BA959A80030B421 /* LaunchScreen.xib in Resources */,
 				0AF939791BA959A80030B421 /* Images.xcassets in Resources */,
@@ -264,8 +286,10 @@
 				0A9521451BAFED0100004FAA /* TodoList.m in Sources */,
 				0AF9396B1BA959A80030B421 /* main.m in Sources */,
 				0AF9399A1BA9FB830030B421 /* GJCoreData.m in Sources */,
+				0A9B6F121BB1379D00DFD67D /* TodoLabel.m in Sources */,
 				0A9521491BAFED8700004FAA /* TodoItem.m in Sources */,
 				0AF939711BA959A80030B421 /* todo.xcdatamodeld in Sources */,
+				0A9B6F0E1BB1362700DFD67D /* TodoListTableViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
