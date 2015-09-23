@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="7701" systemVersion="14E46" minimumToolsVersion="Automatic" macOSVersion="Automatic" iOSVersion="Automatic">
+    <entity name="TodoItem" representedClassName="TodoItem" syncable="YES">
+        <attribute name="content" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="done" optional="YES" attributeType="Boolean" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="orderValue" optional="YES" attributeType="Float" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="title" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="todoList" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="TodoList" inverseName="todoItems" inverseEntity="TodoList" syncable="YES"/>
+    </entity>
+    <entity name="TodoLabel" representedClassName="TodoLabel" syncable="YES">
+        <attribute name="color" optional="YES" attributeType="Transformable" syncable="YES"/>
+        <attribute name="title" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="todoList" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="TodoList" inverseName="labels" inverseEntity="TodoList" syncable="YES"/>
+    </entity>
+    <entity name="TodoList" representedClassName="TodoList" syncable="YES">
+        <attribute name="done" optional="YES" attributeType="Boolean" syncable="YES"/>
+        <attribute name="orderValue" optional="YES" attributeType="Float" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="title" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="labels" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="TodoLabel" inverseName="todoList" inverseEntity="TodoLabel" syncable="YES"/>
+        <relationship name="todoItems" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="TodoItem" inverseName="todoList" inverseEntity="TodoItem" syncable="YES"/>
+    </entity>
+    <elements>
+        <element name="TodoItem" positionX="189" positionY="-18" width="128" height="118"/>
+        <element name="TodoList" positionX="-63" positionY="-18" width="128" height="118"/>
+        <element name="TodoLabel" positionX="63" positionY="27" width="128" height="90"/>
+    </elements>
+</model>
