@@ -41,6 +41,6 @@ All projects are built with Xcode and can be built or tested using the awesome
 xctool -workspace YourWorkspace.xcworkspace \
  -scheme YourScheme \
  test # or build
-``
+```
 
 ### (More to come later... hopefully)
