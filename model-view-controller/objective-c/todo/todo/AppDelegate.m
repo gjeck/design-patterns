@@ -26,9 +26,9 @@
         }
     }];
     _context = [core buildManagedObjectContext];
-        
-    [self setInitialViewController];
     
+    [self setInitialViewController];
+            
     return YES;
 }
 
@@ -48,7 +48,7 @@
     [_context saveWithErrorBlock:nil];
 }
 
--(void)setInitialViewController {
+- (void)setInitialViewController {
     UIStoryboard* todoStory = [UIStoryboard storyboardWithName:@"TodoList" bundle:nil];
     TodoListTableViewController* root = [[TodoListTableViewController alloc] initWithStoryBoard:todoStory
                                                                                      andContext:_context];

@@ -11,6 +11,7 @@
 @import CoreData;
 
 @interface TodoListTableViewController () <NSFetchedResultsControllerDelegate>
+@property (nonatomic, weak) IBOutlet UIBarButtonItem* addButtonItem;
 @property (nonatomic, strong) NSFetchedResultsController* fetchController;
 @end
 
@@ -44,6 +45,7 @@
     [_fetchController performFetch:nil];
     
     self.navigationItem.leftBarButtonItem = self.editButtonItem;
+    self.navigationItem.rightBarButtonItem = _addButtonItem;
     
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
