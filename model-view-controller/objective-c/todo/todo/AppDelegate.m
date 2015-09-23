@@ -9,6 +9,7 @@
 #import "AppDelegate.h"
 #import "GJCoreData.h"
 #import "TodoListTableViewController.h"
+#import "TodoList.h"
 
 
 @interface AppDelegate ()
@@ -25,9 +26,9 @@
         }
     }];
     _context = [core buildManagedObjectContext];
-    
-    [self setInitialViewController];
         
+    [self setInitialViewController];
+    
     return YES;
 }
 

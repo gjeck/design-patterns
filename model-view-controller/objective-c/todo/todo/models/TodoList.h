@@ -15,6 +15,7 @@
 @end
 
 @class TodoItem;
+@class TodoLabel;
 
 @interface TodoList : NSManagedObject <ValueOrdered> {
     NSNumber* orderValue;
@@ -32,5 +33,10 @@
 - (void)removeTodoItemsObject:(TodoItem *)value;
 - (void)addTodoItems:(NSSet *)values;
 - (void)removeTodoItems:(NSSet *)values;
+
+- (void)addTodoLabelsObject:(TodoLabel *)value;
+- (void)removeTodoLabelsObject:(TodoLabel *)value;
+- (void)addTodoLabels:(NSSet *)values;
+- (void)removeTodoLabels:(NSSet *)values;
 
 @end

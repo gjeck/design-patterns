@@ -18,6 +18,5 @@
 @property (nonatomic, retain) NSString* content;
 @property (nonatomic, retain) NSNumber* done;
 @property (nonatomic, retain) NSString* title;
-@property (nonatomic, retain) TodoList* todoList;
 
 @end
