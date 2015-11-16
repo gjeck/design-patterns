@@ -18,7 +18,7 @@
 @class TodoLabel;
 
 @interface TodoList : NSManagedObject <ValueOrdered> {
-    NSNumber* orderValue;
+  NSNumber* orderValue;
 }
 
 @property (nonatomic, retain) NSString* title;

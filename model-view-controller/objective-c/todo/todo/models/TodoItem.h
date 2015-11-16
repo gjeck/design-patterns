@@ -12,7 +12,7 @@
 
 
 @interface TodoItem : NSManagedObject <ValueOrdered> {
-    NSNumber* orderValue;
+  NSNumber* orderValue;
 }
 
 @property (nonatomic, retain) NSString* content;

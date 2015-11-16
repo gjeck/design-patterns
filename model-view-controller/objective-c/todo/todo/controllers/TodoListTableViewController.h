@@ -6,12 +6,19 @@
 //  Copyright (c) 2015 Hyde. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+@import UIKit;
+@import CoreData;
 
 @interface TodoListTableViewController : UITableViewController
 
 @property (nonatomic, weak) NSManagedObjectContext* context;
+@property (nonatomic, weak) NSFetchedResultsController* fetchController;
 
-- (instancetype)initWithStoryBoard:(UIStoryboard*)storyBoard andContext:(NSManagedObjectContext*)context;
+- (instancetype)initWithStoryBoard:(UIStoryboard*)storyBoard
+                           context:(NSManagedObjectContext*)context
+        andFetchedResultController:(NSFetchedResultsController*)fetchController;
+
++ (NSFetchedResultsController *)buildFetchedResultsControllerWithEntityName:(NSString *)entityName
+                                                    andManagedObjectContext:(NSManagedObjectContext *)context;
 
 @end

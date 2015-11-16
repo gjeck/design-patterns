@@ -20,16 +20,16 @@
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    GJCoreData* core = [GJCoreData buildDefaultStackWithErrorBlock:^(NSError *error) {
-        if (error) {
-            NSLog(@"%@", error.localizedDescription);
-        }
-    }];
-    _context = [core buildManagedObjectContext];
-    
-    [self setInitialViewController];
-            
-    return YES;
+  GJCoreData* core = [GJCoreData buildDefaultStackWithErrorBlock:^(NSError *error) {
+    if (error) {
+      NSLog(@"%@", error.localizedDescription);
+    }
+  }];
+  _context = [core buildManagedObjectContext];
+  
+  [self setInitialViewController];
+  
+  return YES;
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application {
@@ -45,15 +45,19 @@
 }
 
 - (void)applicationWillTerminate:(UIApplication *)application {
-    [_context saveWithErrorBlock:nil];
+  [_context saveWithErrorBlock:nil];
 }
 
 - (void)setInitialViewController {
-    UIStoryboard* todoStory = [UIStoryboard storyboardWithName:@"TodoList" bundle:nil];
-    TodoListTableViewController* root = [[TodoListTableViewController alloc] initWithStoryBoard:todoStory
-                                                                                     andContext:_context];
-    UINavigationController* initialVC = (UINavigationController*) _window.rootViewController;
-    [initialVC setViewControllers:@[root]];
+  UIStoryboard* todoStory = [UIStoryboard storyboardWithName:@"TodoList" bundle:nil];
+  
+  NSFetchedResultsController* fc = [TodoListTableViewController buildFetchedResultsControllerWithEntityName:@"TodoList"
+                                                                                    andManagedObjectContext:_context];
+  TodoListTableViewController* root = [[TodoListTableViewController alloc] initWithStoryBoard:todoStory
+                                                                                      context:_context
+                                                                   andFetchedResultController:fc];
+  UINavigationController* initialVC = (UINavigationController*) _window.rootViewController;
+  [initialVC setViewControllers:@[root]];
 }
 
 @end
