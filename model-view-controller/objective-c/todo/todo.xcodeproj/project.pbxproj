@@ -21,6 +21,7 @@
 		0AF9397C1BA959A80030B421 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0AF9397A1BA959A80030B421 /* LaunchScreen.xib */; };
 		0AF9399A1BA9FB830030B421 /* GJCoreData.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AF939991BA9FB830030B421 /* GJCoreData.m */; };
 		0AF9399F1BA9FD710030B421 /* GJCoreDataTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AF9399E1BA9FD710030B421 /* GJCoreDataTest.m */; };
+		37E78F381BF96B7B004559D9 /* TodoListCreateViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 37E78F371BF96B7B004559D9 /* TodoListCreateViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -58,6 +59,8 @@
 		0AF939981BA9FB830030B421 /* GJCoreData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GJCoreData.h; path = stores/GJCoreData.h; sourceTree = "<group>"; };
 		0AF939991BA9FB830030B421 /* GJCoreData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GJCoreData.m; path = stores/GJCoreData.m; sourceTree = "<group>"; };
 		0AF9399E1BA9FD710030B421 /* GJCoreDataTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GJCoreDataTest.m; sourceTree = "<group>"; };
+		37E78F361BF96B7B004559D9 /* TodoListCreateViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TodoListCreateViewController.h; path = controllers/TodoListCreateViewController.h; sourceTree = "<group>"; };
+		37E78F371BF96B7B004559D9 /* TodoListCreateViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TodoListCreateViewController.m; path = controllers/TodoListCreateViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -97,6 +100,8 @@
 			children = (
 				0A9B6F0C1BB1362700DFD67D /* TodoListTableViewController.h */,
 				0A9B6F0D1BB1362700DFD67D /* TodoListTableViewController.m */,
+				37E78F361BF96B7B004559D9 /* TodoListCreateViewController.h */,
+				37E78F371BF96B7B004559D9 /* TodoListCreateViewController.m */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -289,6 +294,7 @@
 				0A9B6F121BB1379D00DFD67D /* TodoLabel.m in Sources */,
 				0A9521491BAFED8700004FAA /* TodoItem.m in Sources */,
 				0AF939711BA959A80030B421 /* todo.xcdatamodeld in Sources */,
+				37E78F381BF96B7B004559D9 /* TodoListCreateViewController.m in Sources */,
 				0A9B6F0E1BB1362700DFD67D /* TodoListTableViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

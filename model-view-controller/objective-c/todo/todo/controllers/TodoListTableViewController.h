@@ -11,8 +11,8 @@
 
 @interface TodoListTableViewController : UITableViewController
 
-@property (nonatomic, weak) NSManagedObjectContext* context;
-@property (nonatomic, weak) NSFetchedResultsController* fetchController;
+@property (nonatomic, weak, readonly) NSManagedObjectContext* context;
+@property (nonatomic, strong) NSFetchedResultsController* fetchController;
 
 - (instancetype)initWithStoryBoard:(UIStoryboard*)storyBoard
                            context:(NSManagedObjectContext*)context

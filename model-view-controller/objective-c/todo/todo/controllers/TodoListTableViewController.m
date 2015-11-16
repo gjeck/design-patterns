@@ -8,12 +8,15 @@
 
 #import "TodoListTableViewController.h"
 #import "TodoList.h"
+#import "TodoListCreateViewController.h"
+#import "GJCoreData.h"
 
 @interface TodoListTableViewController () <NSFetchedResultsControllerDelegate>
 @property (nonatomic, weak) IBOutlet UIBarButtonItem* addButtonItem;
 @end
 
 static NSString* const DefaultCellIdentifier = @"TodoListCell";
+static NSString* const TodoListCreateControllerSegueIdentifier = @"TodoListCreateControllerSegue";
 
 @implementation TodoListTableViewController
 
@@ -203,10 +206,13 @@ forRowAtIndexPath:(NSIndexPath *)indexPath {
 
 #pragma mark - Navigation
 
-// In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-  // Get the new view controller using [segue destinationViewController].
-  // Pass the selected object to the new view controller.
+  if ([segue.identifier isEqualToString:TodoListCreateControllerSegueIdentifier]) {
+    TodoListCreateViewController* vc = segue.destinationViewController;
+    vc.context = _context;
+    vc.potentialTodoList = [TodoList objectInContext:_context];
+    vc.potentialTodoList.orderValue = @([self.tableView numberOfRowsInSection:0]);
+  }
 }
 
 

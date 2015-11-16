@@ -22,7 +22,7 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
   GJCoreData* core = [GJCoreData buildDefaultStackWithErrorBlock:^(NSError *error) {
     if (error) {
-      NSLog(@"%@", error.localizedDescription);
+      NSLog(@"CoreDaraError: %@", error.localizedDescription);
     }
   }];
   _context = [core buildManagedObjectContext];
@@ -49,10 +49,9 @@
 }
 
 - (void)setInitialViewController {
-  UIStoryboard* todoStory = [UIStoryboard storyboardWithName:@"TodoList" bundle:nil];
-  
   NSFetchedResultsController* fc = [TodoListTableViewController buildFetchedResultsControllerWithEntityName:@"TodoList"
                                                                                     andManagedObjectContext:_context];
+  UIStoryboard* todoStory = [UIStoryboard storyboardWithName:@"TodoList" bundle:nil];
   TodoListTableViewController* root = [[TodoListTableViewController alloc] initWithStoryBoard:todoStory
                                                                                       context:_context
                                                                    andFetchedResultController:fc];

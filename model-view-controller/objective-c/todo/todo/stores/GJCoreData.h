@@ -27,4 +27,7 @@
 + (instancetype)createWithAttributes:(NSDictionary*)attributes
                            inContext:(NSManagedObjectContext*)context
                       withErrorBlock:(void (^)(NSError* error))errorBlock;
++ (instancetype)objectInContext:(NSManagedObjectContext*)context;
+- (instancetype)saveInContext:(NSManagedObjectContext*)context
+               withErrorBlock:(void (^)(NSError* error))errorBlock;
 @end

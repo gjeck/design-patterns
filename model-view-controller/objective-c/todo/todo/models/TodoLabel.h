@@ -6,9 +6,9 @@
 //  Copyright (c) 2015 Hyde. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
-#import <CoreData/CoreData.h>
-#import <UIKit/UIKit.h>
+@import Foundation;
+@import CoreData;
+@import UIKit;
 
 
 @class TodoList;
