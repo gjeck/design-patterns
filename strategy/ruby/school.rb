@@ -32,6 +32,7 @@ end
 
 class InsertionSorter
     def sort_it(items)
+	return items if items.length <= 1
         for i in (1...items.length)
             j = i
             while j > 0 and items[j-1] > items[j]
