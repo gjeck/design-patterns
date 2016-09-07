@@ -1,6 +1,5 @@
 # Design Patterns
-Design pattern practice in a few languages. Mostly OOP stuff, but I'll try
-to throw in a few functional too.
+Design pattern practice in a few languages.
 
 ## What is this balderdash?
 In essence, design patterns in software are like design patterns in any other
@@ -34,13 +33,20 @@ Script tests can be run as follows:
 ruby path/to/script_test.rb
 ```
 
-### Objective-C / Swift
+### Objective-C
 All projects are built with Xcode and can be built or tested using the awesome
 [xctool](https://github.com/facebook/xctool) as follows:
 ```Bash
 xctool -workspace YourWorkspace.xcworkspace \
  -scheme YourScheme \
  test # or build
+```
+
+### Swift
+Projects follow the swift package manager conventions. Run tests:
+```Bash
+cd path/to/package
+swift tests
 ```
 
 ### (More to come later... hopefully)

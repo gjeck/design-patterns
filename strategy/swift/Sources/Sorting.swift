@@ -1,47 +1,39 @@
-public extension Array where Element: Comparable  {
-  public typealias Comparison<T> = (T, T) -> Bool
+public extension Array {
+  public typealias Comparison = (Element, Element) -> Bool
 
-  public static func ascendingCompare(_ left: Element, _ right: Element) -> Bool {
-    return left < right
-  }
-
-  public mutating func insertionSort() -> [Element] {
-    if count <= 1 { return self }
+  public mutating func insertionSort(_ compare: Comparison) {
+    if count <= 1 { return }
     for i in (1..<count) {
       var j = i
-      while j > 0 && self[j] < self[j - 1] {
+      while j > 0 && compare(self[j], self[j - 1]) {
         swap(&self[j - 1], &self[j])
         j -= 1
       }
     }
-    return self
   }
 
-  public mutating func mergeSort() -> [Element] {
-    if count <= 1 { return self }
+  public mutating func mergeSort(_ compare: Comparison) {
+    if count <= 1 { return }
     let half = count / 2
     var left = Array(self[0..<half])
+    left.mergeSort(compare)
     var right = Array(self[half..<count])
-    return merge(left: left.mergeSort(), right: right.mergeSort())
+    right.mergeSort(compare)
+    self = merge(left: left, right: right, compare: compare)
   }
 
-  private func merge(left: [Element], right: [Element]) -> [Element] {
+  private func merge(left: [Element], right: [Element], compare: Comparison) -> [Element] {
     var result = [Element]()
     var leftReader = 0
     var rightReader = 0
 
     while leftReader < left.count && rightReader < right.count {
-      if right[rightReader] < left[leftReader] {
-        result.append(right[rightReader])
-        rightReader += 1
-      } else if right[rightReader] == left[leftReader] {
+      if compare(left[leftReader], right[rightReader]) {
         result.append(left[leftReader])
         leftReader += 1
-        result.append(right[rightReader])
-        rightReader += 1
       } else {
-        result.append(left[leftReader])
-        leftReader += 1
+        result.append(right[rightReader])
+        rightReader += 1
       }
     }
     
