@@ -11,6 +11,17 @@ public extension Array {
       }
     }
   }
+  
+  public mutating func bubbleSort(_ compare: Comparison) {
+    if count <= 1 { return }
+    for i in (0..<count) {
+      for j in (0..<count) {
+        if compare(self[i], self[j]) {
+          swap(&self[i], &self[j])
+        }
+      }
+    }
+  }
 
   public mutating func mergeSort(_ compare: Comparison) {
     if count <= 1 { return }
@@ -46,5 +57,35 @@ public extension Array {
     }
 
     return result
+  }
+  
+  public mutating func quickSort(_ compare: Comparison) {
+    if count <= 1 { return }
+    quickSort(compare, lo: 0, hi: count - 1)
+  }
+  
+  private mutating func quickSort(_ compare: Comparison, lo: Int, hi: Int) {
+    if lo < hi {
+      let p = partition(compare, lo: lo, hi: hi)
+      quickSort(compare, lo: lo, hi: p - 1)
+      quickSort(compare, lo: p + 1, hi: hi)
+    }
+  }
+  
+  private mutating func partition(_ compare: Comparison, lo: Int, hi: Int) -> Int {
+    let pivot = self[hi]
+    var i = lo
+    for j in (lo..<hi) {
+      if compare(self[j], pivot) {
+        if i != j {
+          swap(&self[i], &self[j])
+        }
+        i += 1
+      }
+    }
+    if i != hi {
+      swap(&self[i], &self[hi])
+    }
+    return i
   }
 }
