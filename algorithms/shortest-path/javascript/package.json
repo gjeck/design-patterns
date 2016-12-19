@@ -1,0 +1,14 @@
+{
+  "name": "shortest_path",
+  "version": "1.0.0",
+  "description": "Dijkstra's shortest path algorithm",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha"
+  },
+  "author": "Greg Jeckell",
+  "license": "MIT",
+  "devDependencies": {
+    "mocha": "^3.2.0"
+  }
+}
