@@ -43,10 +43,17 @@ xctool -workspace YourWorkspace.xcworkspace \
 ```
 
 ### Swift
-Projects follow the swift package manager conventions. Run tests:
+Projects follow the swift package manager conventions. To run tests:
 ```Bash
 cd path/to/package
 swift tests
+```
+
+### Javascript
+Projects follow node/npm pagacke conventions. To run tests:
+```Bash
+cd path/to/package
+npm test
 ```
 
 ### (More to come later... hopefully)
