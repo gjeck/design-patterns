@@ -13,7 +13,7 @@ describe('Dijkstra\'s Algorithm', function() {
       a: { b: 6, d: 1},
       b: { a: 6, d: 2, e: 2, c: 5 },
       c: { b: 5, e: 5 },
-      d: { a:1, b: 2, e: 1 },
+      d: { a: 1, b: 2, e: 1 },
       e: { d: 1, b: 2, c: 5 }
     };
 
