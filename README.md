@@ -50,7 +50,7 @@ swift tests
 ```
 
 ### Javascript
-Projects follow node/npm pagacke conventions. To run tests:
+Projects follow node/npm package conventions. To run tests:
 ```Bash
 cd path/to/package
 npm test
