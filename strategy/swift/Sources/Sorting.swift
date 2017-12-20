@@ -6,7 +6,7 @@ public extension Array {
     for i in (1..<count) {
       var j = i
       while j > 0 && compare(self[j], self[j - 1]) {
-        swap(&self[j - 1], &self[j])
+        swapAt(j - 1, j)
         j -= 1
       }
     }
@@ -17,7 +17,7 @@ public extension Array {
     for i in (0..<count) {
       for j in (0..<count) {
         if compare(self[i], self[j]) {
-          swap(&self[i], &self[j])
+          swapAt(i, j)
         }
       }
     }
@@ -78,13 +78,13 @@ public extension Array {
     for j in (lo..<hi) {
       if compare(self[j], pivot) {
         if i != j {
-          swap(&self[i], &self[j])
+          swapAt(i, j)
         }
         i += 1
       }
     }
     if i != hi {
-      swap(&self[i], &self[hi])
+      swapAt(i, hi)
     }
     return i
   }
